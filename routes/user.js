@@ -15,6 +15,7 @@ var db = firebase.database();
 var User = function () {};
 
 User.prototype.createAccount = function createAccount(username,userpass,callback) {
+  console.log(username)
   firebase.auth().createUserWithEmailAndPassword(username, userpass).then(function(){
     var client = firebase.auth().currentUser;
     client.sendEmailVerification().then(function() {
@@ -33,12 +34,16 @@ User.prototype.createAccount = function createAccount(username,userpass,callback
 User.prototype.checkAccount = function checkAccount(username,userpass,callback){
   firebase.auth().signInWithEmailAndPassword(username,userpass).then(function(){
     var client = firebase.auth().currentUser;
-    console.log(client.emailVerified);
-    callback('no','good')
+    var flag = client.emailVerified;
+    console.log(flag);
+    if(flag==false){
+      callback('no','bad')
+    }else {
+      callback('no','good');
+    }
   }).catch(function(error) {
-    var errorMsg = error.message;
-    console.log(errorMsg);
-    callback(errorMsg,'bad');
+
+    callback('no','error');
   });
 };
 

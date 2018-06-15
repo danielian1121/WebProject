@@ -12,18 +12,15 @@ router.use(session({
 }));
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('register');
+    res.render('weblogin/signup.html');
 });
 
 router.post('/', function(req, res, next) {
   var username = req.body['txtUserName'];
   var password = req.body['txtUserPwd'];
   User.createAccount(username,password,function(uid,result){
-    if(result=='good'){
-      res.redirect('/');
-    }else{
-      res.redirect('/register');
-    }
+    console.log(result);
+    res.end(result);
   });
 });
 

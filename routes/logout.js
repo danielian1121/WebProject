@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var User = require('./user');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
@@ -10,16 +9,10 @@ router.use(session({
  resave: true,
  saveUninitialized:true
 }));
-/* GET home page. */
 
-
-
-router.get('/', function(req, res, next) {
-    res.render('index');
+router.get('/',function(req,res,next){
+  req.session.destroy();
+  res.redirect('/loginin');
 });
-
-
-
-
 
 module.exports = router;
