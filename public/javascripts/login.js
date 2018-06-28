@@ -1,4 +1,4 @@
-var correct = 0;
+    var correct = 0;
     function validateEmail(email) {
     var addr = document.getElementById("account");
     var at = addr.value.indexOf('@');
