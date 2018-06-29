@@ -7,6 +7,7 @@
   <link href="/stylesheets/style_1.css" rel="stylesheet">
   <link href="/stylesheets/upload.css" rel="stylesheet">
   <script src="/javascripts/upload.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 
@@ -78,95 +79,106 @@
 
       <!-- Item info input area-->
       <div class="Container_upload_info">
-        <div class="form-group">
-          <label for="inputAddress">商品名稱</label>
-          <input type="text" class="form-control" id="name" placeholder="全身鏡">
-        </div>
+        <form class="upload_info" id="form1" method="GET">
+          <div class="form-group">
+            <label for="inputAddress">商品名稱</label>
+            <input type="text" class="form-control" id="name" placeholder="全身鏡" required>
+          </div>
 
-        <!--   price-->
-        <div class="form-row">
-          <div id="Item-price" class="form-group col-md-6">
-            <label for="Item-price">價格</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
+          <!--   price-->
+          <div class="form-row">
+            <div id="Item-price" class="form-group col-md-6">
+              <label for="Item-price">價格</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="number" id="price" class="form-control" aria-label="price" required>
               </div>
-              <input type="number" id="price" class="form-control" aria-label="price">
+            </div>
+
+            <!--    amount -->
+            <div class="form-group col-md-6">
+              <label for="amount">數量</label>
+              <input type="number" class="form-control" id="amount" placeholder="1">
             </div>
           </div>
 
-          <!--    amount -->
-          <div class="form-group col-md-6">
-            <label for="amount">數量</label>
-            <input type="number" class="form-control" id="amount" placeholder="1">
+          <!--    info -->
+
+          <div class="form-group">
+            <label for="itemInfo">商品描述</label>
+            <textarea class="form-control" aria-label="商品描述" id="itemInfo" required></textarea>
           </div>
-        </div>
-
-        <!--    info -->
-
-        <div class="form-group">
-          <label for="itemInfo">商品描述</label>
-          <textarea class="form-control" aria-label="商品描述" id="itemInfo"></textarea>
-        </div>
-        <!--    category -->
-        <div class="form-group">
-          <label for="category">類型與標籤</label>
-          <div class="form-control cate">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="home" name="category" value="home">
-              <label class="form-check-label" for="home">居家</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="foods" name="category" value="foods">
-              <label class="form-check-label" for="foods">食物</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="clothes" name="category" value="clothes">
-              <label class="form-check-label" for="clothes">衣物</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="3C" name="category" value="3C">
-              <label class="form-check-label" for="3C">3C</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="pets" name="category" value="pets">
-              <label class="form-check-label" for="pets">寵物</label>
-            </div>
-            <input type="text" class="form-control" id="hashtag" placeholder="#IKEA #全身鏡">
+          <!--    category -->
+          <div class="form-group">
+            <label for="category">類型與標籤</label>
+            <div class="form-control cate">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="home" name="category" value="home" required>
+                <label class="form-check-label" for="home">居家</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="foods" name="category" value="foods">
+                <label class="form-check-label" for="foods">食物</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="clothes" name="category" value="clothes">
+                <label class="form-check-label" for="clothes">衣物</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="3C" name="category" value="3C">
+                <label class="form-check-label" for="3C">3C</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="pets" name="category" value="pets">
+                <label class="form-check-label" for="pets">寵物</label>
+              </div>
+              <input type="text" class="form-control" id="hashtag" placeholder="#IKEA #全身鏡">
 
 
-          </div>
-        </div>
-
-        <!--面交地點-->
-        <div class="form-group">
-          <label for="location">面交地點</label>
-          <div class="form-control cate">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="Checkbox" name="kf-ent" id="kf-ent" value="kf-ent">
-              <label class="form-check-label" for="kf-ent">光口</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="Checkbox" name="kf-cor" id="kf-cor" value="kf-cor">
-              <label class="form-check-label" for="kf-cor">光轉</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="Checkbox" name="lib" id="lib" value="lib">
-              <label class="form-check-label" for="lib">總圖</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="Checkbox" name="kf-dong" id="kf-dong" value="kf-dong">
-              <label class="form-check-label" for="kf-dong">小東口</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="Checkbox" name="other" id="other" value="other">
-              <label class="form-check-label" for="other">其他</label>
             </div>
           </div>
-        </div>
-        <!--    upload btn-->
-        <button id="submit" class="btn btn-primary" onclick="check_upload">Upload</button>
 
+          <!--面交地點-->
+          <div class="form-group">
+            <label for="location">面交地點</label>
+            <div class="form-control cate">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="Checkbox" name="place" id="kf-ent" value="kf-ent">
+                <label class="form-check-label" for="kf-ent">光口</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="Checkbox" name="place" id="kf-cor" value="kf-cor">
+                <label class="form-check-label" for="kf-cor">光轉</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="Checkbox" name="place" id="lib" value="lib">
+                <label class="form-check-label" for="lib">總圖</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="Checkbox" name="place" id="kf-dong" value="kf-dong">
+                <label class="form-check-label" for="kf-dong">小東口</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="Checkbox" name="place" id="other" value="other">
+                <label class="form-check-label" for="other">其他</label>
+              </div>
+            </div>
+          </div>
+          <!--    upload btn-->
+          <button id="submit" type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <script>
+          $("#submit").click(function (e) {
+            if ($("input[name=place]:checked").length == 0) {
+              $("input[name=place]:first").attr("required", "required");
+            } else {
+              $("input[name=place]").removeAttr("required");
+              $("form1").submit();
+            }
+          });
+        </script>
       </div>
       <!-- end of Item info input area-->
 
